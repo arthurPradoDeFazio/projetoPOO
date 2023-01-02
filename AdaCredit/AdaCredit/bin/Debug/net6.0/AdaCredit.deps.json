@@ -1,0 +1,41 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v6.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v6.0": {
+      "AdaCredit/1.0.0": {
+        "dependencies": {
+          "ConsoleMenu-simple": "2.4.3"
+        },
+        "runtime": {
+          "AdaCredit.dll": {}
+        }
+      },
+      "ConsoleMenu-simple/2.4.3": {
+        "runtime": {
+          "lib/net5.0/ConsoleMenu.dll": {
+            "assemblyVersion": "2.4.3.0",
+            "fileVersion": "2.4.3.0"
+          }
+        }
+      }
+    }
+  },
+  "libraries": {
+    "AdaCredit/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "ConsoleMenu-simple/2.4.3": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-wrjK/VTZU64eK0jXH3TAyw+omoYNrGtESk0FcdmPtCc4YhNQVEFdUgkioorS09dEPaTajRxQZU6Tg/uDl4Ofsg==",
+      "path": "consolemenu-simple/2.4.3",
+      "hashPath": "consolemenu-simple.2.4.3.nupkg.sha512"
+    }
+  }
+}

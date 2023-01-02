@@ -1,0 +1,17 @@
+/Users/Arthur_Prado_De_Fazio/code_at_CS/projetoPOO/AdaCredit/AdaCredit/bin/Debug/net6.0/AdaCredit
+/Users/Arthur_Prado_De_Fazio/code_at_CS/projetoPOO/AdaCredit/AdaCredit/bin/Debug/net6.0/AdaCredit.deps.json
+/Users/Arthur_Prado_De_Fazio/code_at_CS/projetoPOO/AdaCredit/AdaCredit/bin/Debug/net6.0/AdaCredit.runtimeconfig.json
+/Users/Arthur_Prado_De_Fazio/code_at_CS/projetoPOO/AdaCredit/AdaCredit/bin/Debug/net6.0/AdaCredit.dll
+/Users/Arthur_Prado_De_Fazio/code_at_CS/projetoPOO/AdaCredit/AdaCredit/bin/Debug/net6.0/AdaCredit.pdb
+/Users/Arthur_Prado_De_Fazio/code_at_CS/projetoPOO/AdaCredit/AdaCredit/bin/Debug/net6.0/ConsoleMenu.dll
+/Users/Arthur_Prado_De_Fazio/code_at_CS/projetoPOO/AdaCredit/AdaCredit/obj/Debug/net6.0/AdaCredit.csproj.AssemblyReference.cache
+/Users/Arthur_Prado_De_Fazio/code_at_CS/projetoPOO/AdaCredit/AdaCredit/obj/Debug/net6.0/AdaCredit.GeneratedMSBuildEditorConfig.editorconfig
+/Users/Arthur_Prado_De_Fazio/code_at_CS/projetoPOO/AdaCredit/AdaCredit/obj/Debug/net6.0/AdaCredit.AssemblyInfoInputs.cache
+/Users/Arthur_Prado_De_Fazio/code_at_CS/projetoPOO/AdaCredit/AdaCredit/obj/Debug/net6.0/AdaCredit.AssemblyInfo.cs
+/Users/Arthur_Prado_De_Fazio/code_at_CS/projetoPOO/AdaCredit/AdaCredit/obj/Debug/net6.0/AdaCredit.csproj.CoreCompileInputs.cache
+/Users/Arthur_Prado_De_Fazio/code_at_CS/projetoPOO/AdaCredit/AdaCredit/obj/Debug/net6.0/AdaCredit.csproj.CopyComplete
+/Users/Arthur_Prado_De_Fazio/code_at_CS/projetoPOO/AdaCredit/AdaCredit/obj/Debug/net6.0/AdaCredit.dll
+/Users/Arthur_Prado_De_Fazio/code_at_CS/projetoPOO/AdaCredit/AdaCredit/obj/Debug/net6.0/refint/AdaCredit.dll
+/Users/Arthur_Prado_De_Fazio/code_at_CS/projetoPOO/AdaCredit/AdaCredit/obj/Debug/net6.0/AdaCredit.pdb
+/Users/Arthur_Prado_De_Fazio/code_at_CS/projetoPOO/AdaCredit/AdaCredit/obj/Debug/net6.0/AdaCredit.genruntimeconfig.cache
+/Users/Arthur_Prado_De_Fazio/code_at_CS/projetoPOO/AdaCredit/AdaCredit/obj/Debug/net6.0/ref/AdaCredit.dll

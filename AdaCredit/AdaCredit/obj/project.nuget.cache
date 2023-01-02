@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "vOZxerZTDExet9a3tpnExzJjrl80SAchQUKiT38Du4/Q6d3v/8u09DUwDAEblE8d+EXvP7Bgx7a/t3nn0s51uw==",
+  "success": true,
+  "projectFilePath": "/Users/Arthur_Prado_De_Fazio/code_at_CS/projetoPOO/AdaCredit/AdaCredit/AdaCredit.csproj",
+  "expectedPackageFiles": [
+    "/Users/Arthur_Prado_De_Fazio/.nuget/packages/consolemenu-simple/2.4.3/consolemenu-simple.2.4.3.nupkg.sha512"
+  ],
+  "logs": []
+}

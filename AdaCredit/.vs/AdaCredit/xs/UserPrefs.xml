@@ -1,0 +1,25 @@
+﻿<Properties StartupConfiguration="{71C504F7-CE7F-4CA1-A95B-23A2597BB52E}|Default">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MultiItemStartupConfigurations />
+  <MonoDevelop.Ide.ItemProperties.AdaCredit PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="AdaCredit/AdaCreditController.cs">
+    <Files>
+      <File FileName="AdaCredit/Program.cs" Line="11" Column="1" />
+      <File FileName="AdaCredit/AdaCreditController.cs" Line="1" Column="1" />
+      <File FileName="AdaCredit/View.cs" Line="27" Column="52" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="AdaCredit" expanded="True">
+            <Node name="AdaCredit" expanded="True" />
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+</Properties>
