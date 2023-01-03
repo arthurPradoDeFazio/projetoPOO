@@ -18,6 +18,10 @@ namespace AdaCredit
 		{
 			this.proximoEstado.Add(opcao, proximoEstado);
 		}
-	}
+
+        public EstadoDeMenu? proximoMenu() => proximoEstado.GetValueOrDefault(triggerMenu.CurrentItem.Name);
+
+        public void Show() => triggerMenu.Show();
+    }
 }
 
