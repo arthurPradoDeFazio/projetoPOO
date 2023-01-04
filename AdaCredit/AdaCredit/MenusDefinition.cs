@@ -39,6 +39,7 @@ namespace AdaCredit
                                         .Add("Área do funcionário", ConsoleMenu.Close)
                                         .Add("Processar de transações", ConsoleMenu.Close)
                                         .Add("Gerar relatório", ConsoleMenu.Close)
+                                        .Add("Ver clientes", (thisMenu) => { thisMenu.CloseMenu(); Console.Clear() ;  Cliente.VerClientes("1ywsNDQ1qz"); Thread.Sleep(100); })
                                         .Add("Voltar", ConsoleMenu.Close)
                                         .Configure(config =>
                                         {
@@ -60,7 +61,7 @@ namespace AdaCredit
 
         private static EstadoDeMenu InitAreaDoClinte(string[] args, EstadoDeMenu anterior) {
             EstadoDeMenu areaDoCliente = new(new ConsoleMenu(args, 2)
-                            .Add("Cadastrar novo cliente", ConsoleMenu.Close)
+                            .Add("Cadastrar novo cliente", (thisMenu) => { ServicosCliente.CadastrarCliente(); thisMenu.CloseMenu(); })
                             .Add("Consultar dados de cliente", ConsoleMenu.Close)
                             .Add("Alterar cadastro de cliente", ConsoleMenu.Close)
                             .Add("Desativar cadastro de cliente", ConsoleMenu.Close)

@@ -9,8 +9,12 @@
 
   <ItemGroup>
     <None Remove="ConsoleMenu-simple" />
+    <None Remove="CsvHelper" />
+    <None Remove="Bogus" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="ConsoleMenu-simple" Version="2.4.3" />
+    <PackageReference Include="CsvHelper" Version="30.0.1" />
+    <PackageReference Include="Bogus" Version="34.0.2" />
   </ItemGroup>
 </Project>

@@ -3,8 +3,7 @@ class Program
 {
     static void Main(string[] args)
     {
-        var c = new AdaCredit.AdaCreditController();
-        c.RunApplication(args);
+        new AdaCredit.AdaCreditController().RunApplication(args);
     }
 }
 
