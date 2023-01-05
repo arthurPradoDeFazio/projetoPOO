@@ -9,7 +9,6 @@ namespace AdaCredit
 			while (true)
 			{
 				menuAtual.Show();
-				Console.Clear();
 				menuAtual = menuAtual.proximoMenu();
 				if (menuAtual == null)
 					menuAtual = telaPrincipal;

@@ -3,14 +3,27 @@
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.ItemProperties.AdaCredit PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="AdaCredit/Cliente.cs">
-    <Files>
-      <File FileName="AdaCredit/ServicosCliente.cs" Line="36" Column="17" />
-      <File FileName="AdaCredit/AdaCreditController.cs" Line="1" Column="1" />
-      <File FileName="AdaCredit/Cliente.cs" Line="17" Column="19" />
-    </Files>
-  </MonoDevelop.Ide.Workbench>
   <MultiItemStartupConfigurations />
+  <MonoDevelop.Ide.ItemProperties.AdaCredit PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="AdaCredit/MenusDefinition.cs">
+    <Files>
+      <File FileName="AdaCredit/ServicosCliente.cs" Line="80" Column="17" />
+      <File FileName="AdaCredit/AdaCreditController.cs" Line="12" Column="1" />
+      <File FileName="AdaCredit/Cliente.cs" Line="22" Column="5" />
+      <File FileName="AdaCredit/EstadoDeMenu.cs" Line="1" Column="1" />
+      <File FileName="AdaCredit/MenusDefinition.cs" Line="24" Column="1" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="AdaCredit" expanded="True">
+            <Node name="AdaCredit" expanded="True">
+              <Node name="MenusDefinition.cs" selected="True" />
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
 </Properties>

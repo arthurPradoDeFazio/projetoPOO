@@ -16,7 +16,7 @@ namespace AdaCredit
 		public string Agencia { get; init; }
 		public bool Ativo { get; init; }
 
-		private class ClienteMap : ClassMap<Cliente>
+		public class ClienteMap : ClassMap<Cliente>
 		{
 			public ClienteMap()
 			{
@@ -74,7 +74,7 @@ namespace AdaCredit
             return (char)((11 - (d % 11)) + '0');
         }
 
-		internal void SalveNoCSV(string nomeDoArquivo)
+		public void SalveNoCSV(string nomeDoArquivo)
 		{
 			var config = new CsvConfiguration(CultureInfo.InvariantCulture)
 			{
@@ -90,6 +90,11 @@ namespace AdaCredit
 				csv.WriteRecord(this);
 			}
         }
+
+		public override string ToString()
+		{
+			return $"\tNome: {Nome} {Sobrenome}{Environment.NewLine}\tSaldo: {Saldo}{Environment.NewLine}\tAtividade: {(Ativo ? "ativo" : "inativo")}";
+		}
     }
 
 }

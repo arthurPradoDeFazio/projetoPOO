@@ -21,7 +21,6 @@ namespace AdaCredit
                                                             .Configure(config =>
                                                             {
                                                                 config.Selector = ">> ";
-                                                                config.EnableFilter = true;
                                                                 config.Title = "Login";
                                                                 config.EnableBreadcrumb = true;
                                                                 config.WriteBreadcrumbAction = titles => Console.WriteLine(string.Join(" / ", titles));
@@ -62,22 +61,43 @@ namespace AdaCredit
         private static EstadoDeMenu InitAreaDoClinte(string[] args, EstadoDeMenu anterior) {
             EstadoDeMenu areaDoCliente = new(new ConsoleMenu(args, 2)
                             .Add("Cadastrar novo cliente", (thisMenu) => { ServicosCliente.CadastrarCliente(); thisMenu.CloseMenu(); })
-                            .Add("Consultar dados de cliente", ConsoleMenu.Close)
+                            .Add("Consultar dados de cliente", (thisMenu) => { ServicosCliente.ConsultaDados(); thisMenu.CloseMenu(); }) // TODO demorar mais para apagar a tela
                             .Add("Alterar cadastro de cliente", ConsoleMenu.Close)
-                            .Add("Desativar cadastro de cliente", ConsoleMenu.Close)
+                            .Add("Desativar cadastro de cliente", (thisMenu) => { ServicosCliente.DesativarCadastro(); thisMenu.CloseMenu(); })
                             .Add("Voltar", ConsoleMenu.Close)
                             .Configure(config =>
                             {
                                 config.Selector = ">> ";
-                                config.EnableFilter = true;
-                                config.Title = "Tela principal";
+                                config.Title = "Área do Cliente";
                                 config.EnableBreadcrumb = true;
                                 config.WriteBreadcrumbAction = titles => Console.WriteLine(string.Join(" / ", titles));
                             }));
 
             areaDoCliente.AdicionaEntrada("Voltar", anterior);
+            areaDoCliente.AdicionaEntrada("Alterar cadastro de cliente", InitAlteracaoCliente(args, areaDoCliente));
 
             return areaDoCliente;
+        }
+
+        private static EstadoDeMenu InitAlteracaoCliente(string[] args, EstadoDeMenu anterior)
+        {
+            EstadoDeMenu alteracaoDoCliente = new(new ConsoleMenu(args, 2)
+                            .Add("Nome", (thisMenu) => { ServicosCliente.AlteraNome(); thisMenu.CloseMenu(); })
+                            .Add("Sobrenome", (thisMenu) => { ServicosCliente.AlteraSobrenome(); thisMenu.CloseMenu(); })
+                            .Add("Senha", (thisMenu) => { ServicosCliente.AlteraSenha(); thisMenu.CloseMenu(); })
+                            .Add("Voltar", ConsoleMenu.Close)
+                            .Configure(config =>
+                            {
+                                config.Selector = ">> ";
+                                config.EnableFilter = true;
+                                config.Title = "O que deseja alterar?";
+                                config.EnableBreadcrumb = true;
+                                config.WriteBreadcrumbAction = titles => Console.WriteLine(string.Join(" / ", titles));
+                            }));
+
+            alteracaoDoCliente.AdicionaEntrada("Voltar", anterior);
+
+            return alteracaoDoCliente;
         }
 
         private static EstadoDeMenu InitAreaDoFuncionario(string[] args, EstadoDeMenu anterior)
@@ -106,7 +126,8 @@ namespace AdaCredit
             EstadoDeMenu areaDeRelatorios = new(new ConsoleMenu(args, 2)
                                                     .Add("Exibir clientes ativos e saldos", ConsoleMenu.Close)
                                                     .Add("Exibir clientes inativos", ConsoleMenu.Close)
-                                                    .Add("Desativar cadastro de funcionário", ConsoleMenu.Close)
+                                                    .Add("Exibir funcionários e último login", ConsoleMenu.Close)
+                                                    .Add("Exibir transações com erro", ConsoleMenu.Close)
                                                     .Add("Voltar", ConsoleMenu.Close)
                                                     .Configure(config =>
                                                     {
@@ -121,6 +142,7 @@ namespace AdaCredit
 
             return areaDeRelatorios;
         }
+
     }
 }
 
