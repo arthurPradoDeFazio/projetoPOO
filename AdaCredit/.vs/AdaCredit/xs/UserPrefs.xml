@@ -1,29 +1,31 @@
 ﻿<Properties StartupConfiguration="{71C504F7-CE7F-4CA1-A95B-23A2597BB52E}|Default">
-  <MonoDevelop.Ide.DebuggingService.Breakpoints>
-    <BreakpointStore />
-  </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MultiItemStartupConfigurations />
   <MonoDevelop.Ide.ItemProperties.AdaCredit PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="AdaCredit/MenusDefinition.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.Workbench ActiveDocument="AdaCredit/Funcionario.cs">
     <Files>
-      <File FileName="AdaCredit/ServicosCliente.cs" Line="80" Column="17" />
-      <File FileName="AdaCredit/AdaCreditController.cs" Line="12" Column="1" />
-      <File FileName="AdaCredit/Cliente.cs" Line="22" Column="5" />
-      <File FileName="AdaCredit/EstadoDeMenu.cs" Line="1" Column="1" />
-      <File FileName="AdaCredit/MenusDefinition.cs" Line="24" Column="1" />
+      <File FileName="AdaCredit/ServicosCliente.cs" />
+      <File FileName="AdaCredit/AdaCreditController.cs" />
+      <File FileName="AdaCredit/Cliente.cs" />
+      <File FileName="AdaCredit/EstadoDeMenu.cs" />
+      <File FileName="AdaCredit/MenusDefinition.cs" />
+      <File FileName="AdaCredit/ServicosRelatorios.cs" />
+      <File FileName="AdaCredit/Funcionario.cs" Line="25" Column="48" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="AdaCredit" expanded="True">
             <Node name="AdaCredit" expanded="True">
-              <Node name="MenusDefinition.cs" selected="True" />
+              <Node name="Funcionario.cs" selected="True" />
             </Node>
           </Node>
         </State>
       </Pad>
     </Pads>
   </MonoDevelop.Ide.Workbench>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
 </Properties>
