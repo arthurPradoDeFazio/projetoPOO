@@ -1,20 +1,20 @@
 ﻿<Properties StartupConfiguration="{71C504F7-CE7F-4CA1-A95B-23A2597BB52E}|Default">
-  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
   <MultiItemStartupConfigurations />
   <MonoDevelop.Ide.ItemProperties.AdaCredit PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.Workbench ActiveDocument="AdaCredit/Funcionario.cs">
     <Files>
-      <File FileName="AdaCredit/ServicosCliente.cs" />
+      <File FileName="AdaCredit/ServicosCliente.cs" Line="127" Column="28" />
       <File FileName="AdaCredit/AdaCreditController.cs" />
-      <File FileName="AdaCredit/Cliente.cs" />
+      <File FileName="AdaCredit/Cliente.cs" Line="57" Column="34" />
       <File FileName="AdaCredit/EstadoDeMenu.cs" />
-      <File FileName="AdaCredit/MenusDefinition.cs" />
-      <File FileName="AdaCredit/ServicosRelatorios.cs" />
-      <File FileName="AdaCredit/Funcionario.cs" Line="25" Column="48" />
+      <File FileName="AdaCredit/MenusDefinition.cs" Line="13" Column="10" />
+      <File FileName="AdaCredit/ServicosRelatorios.cs" Line="1" Column="1" />
+      <File FileName="AdaCredit/Funcionario.cs" Line="59" Column="15" />
+      <File FileName="AdaCredit/ServicosFuncionario.cs" Line="38" Column="25" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -28,4 +28,5 @@
       </Pad>
     </Pads>
   </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
 </Properties>

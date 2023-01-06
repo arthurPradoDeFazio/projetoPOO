@@ -18,12 +18,12 @@ namespace AdaCredit
 		{
 			public FuncionarioMap()
 			{
-				Map(c => c.Nome).Index(1).Name("nome");
-				Map(c => c.Sobrenome).Index(5).Name("sobrenome");
-				Map(c => c.Senha).Index(6).Name("senha");
-				Map(c => c.DataUltimoLogin).Index(0).Name("data_ultimo_login");
-				Map(c => c.HoraUltimoLogin).Index(4).Name("hora_ultimo_login");
-				Map(c => c.Ativo).Index(7).Name("atividade");
+				Map(c => c.Nome).Index(0).Name("nome");
+				Map(c => c.Sobrenome).Index(1).Name("sobrenome");
+				Map(c => c.Senha).Index(4).Name("senha");
+				Map(c => c.DataUltimoLogin).Index(3).Name("data_ultimo_login");
+				Map(c => c.HoraUltimoLogin).Index(2).Name("hora_ultimo_login");
+				Map(c => c.Ativo).Index(5).Name("atividade");
 			}
 		}
 
@@ -60,7 +60,7 @@ namespace AdaCredit
 		{
 			var config = new CsvConfiguration(CultureInfo.InvariantCulture)
 			{
-				HasHeaderRecord = true,
+				HasHeaderRecord = false,
 				Delimiter = ";"
 			};
 
@@ -69,7 +69,7 @@ namespace AdaCredit
 			using (var csv = new CsvWriter(escritor, config))
 			{
 				csv.Context.RegisterClassMap<FuncionarioMap>();
-				csv.WriteRecord(this);
+				csv.WriteRecords(new List<Funcionario> { this });
 			}
         }
 

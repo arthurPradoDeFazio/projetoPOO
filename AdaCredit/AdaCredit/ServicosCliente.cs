@@ -124,7 +124,7 @@ namespace AdaCredit
 
             var clientes = Cliente.ClientesNoArquivo();
             clientes[novoCliente.Conta] = novoCliente;
-            SubstituaArquivo(clientes);
+            ServicosCliente.SubstituaArquivo(clientes);
         }
 
         public static void AlteraSobrenome()
@@ -151,7 +151,7 @@ namespace AdaCredit
 
             var clientes = Cliente.ClientesNoArquivo();
             clientes[novoCliente.Conta] = novoCliente;
-            SubstituaArquivo(clientes);
+            ServicosCliente.SubstituaArquivo(clientes);
         }
 
         public static void AlteraSenha()
@@ -160,10 +160,10 @@ namespace AdaCredit
             if (!cliente.Ativo)
                 throw new ArgumentException("Cliente inativo!");
 
-            Console.Write("Entre com o nova senha: ");
+            Console.Write("Entre com a nova senha: ");
             string? novaSenha = Console.ReadLine();
             if (novaSenha== null)
-                throw new IOException("Não foi possível ler o novo nome");
+                throw new IOException("Não foi possível ler a nova senha");
             var novoCliente = new Cliente
             {
                 Nome = cliente.Nome,

@@ -54,7 +54,7 @@ namespace AdaCredit
 			return contaCliente;
 		}
 
-		public static void VerClientes(string senha)
+		public static void VerClientes()
 		{
 			foreach (var c in ClientesNoArquivo())
 				Console.WriteLine(c.Value);
@@ -78,7 +78,7 @@ namespace AdaCredit
 		{
 			var config = new CsvConfiguration(CultureInfo.InvariantCulture)
 			{
-				HasHeaderRecord = true,
+				HasHeaderRecord = false,
 				Delimiter = ";"
 			};
 
@@ -87,7 +87,7 @@ namespace AdaCredit
 			using (var csv = new CsvWriter(escritor, config))
 			{
 				csv.Context.RegisterClassMap<ClienteMap>();
-				csv.WriteRecord(this);
+				csv.WriteRecords(new List<Cliente> { this });
 			}
         }
 

@@ -38,7 +38,7 @@ namespace AdaCredit
                                         .Add("Área do funcionário", ConsoleMenu.Close)
                                         .Add("Processar de transações", ConsoleMenu.Close)
                                         .Add("Gerar relatório", ConsoleMenu.Close)
-                                        .Add("Ver clientes", (thisMenu) => { thisMenu.CloseMenu(); Console.Clear() ;  Cliente.VerClientes("1ywsNDQ1qz"); Thread.Sleep(100); })
+                                        .Add("Ver clientes", (thisMenu) => { thisMenu.CloseMenu(); Console.Clear() ;  Cliente.VerClientes(); Thread.Sleep(100); })
                                         .Add("Voltar", ConsoleMenu.Close)
                                         .Configure(config =>
                                         {
@@ -49,7 +49,7 @@ namespace AdaCredit
                                             config.WriteBreadcrumbAction = titles => Console.WriteLine(string.Join(" / ", titles));
                                         }));
 
-            telaPrincipal.AdicionaEntrada("Área do cliente", InitAreaDoClinte(args, telaPrincipal));
+            telaPrincipal.AdicionaEntrada("Área do cliente", InitAreaDoCliente(args, telaPrincipal));
             telaPrincipal.AdicionaEntrada("Área do funcionário", InitAreaDoFuncionario(args, telaPrincipal));
             telaPrincipal.AdicionaEntrada("Gerar relatório", InitAreaDeRelatorios(args, telaPrincipal));
             telaPrincipal.AdicionaEntrada("Voltar", anterior);
@@ -58,7 +58,7 @@ namespace AdaCredit
         }
 
 
-        private static EstadoDeMenu InitAreaDoClinte(string[] args, EstadoDeMenu anterior) {
+        private static EstadoDeMenu InitAreaDoCliente(string[] args, EstadoDeMenu anterior) {
             EstadoDeMenu areaDoCliente = new(new ConsoleMenu(args, 2)
                             .Add("Cadastrar novo cliente", (thisMenu) => { ServicosCliente.CadastrarCliente(); thisMenu.CloseMenu(); })
                             .Add("Consultar dados de cliente", (thisMenu) => { ServicosCliente.ConsultaDados(); thisMenu.CloseMenu(); }) // TODO demorar mais para apagar a tela
@@ -103,9 +103,9 @@ namespace AdaCredit
         private static EstadoDeMenu InitAreaDoFuncionario(string[] args, EstadoDeMenu anterior)
         {
             EstadoDeMenu areaDoFuncionario = new(new ConsoleMenu(args, 2)
-                                            .Add("Cadastrar novo funcionáro", ConsoleMenu.Close)
-                                            .Add("Alterar senha", ConsoleMenu.Close)
-                                            .Add("Desativar cadastro de funcionário", ConsoleMenu.Close)
+                                            .Add("Cadastrar novo funcionáro", (thisMenu) => { ServicosFuncionario.CadastrarFuncionario(); thisMenu.CloseMenu(); })
+                                            .Add("Alterar senha", (thisMenu) => { ServicosFuncionario.AlteraSenha(); thisMenu.CloseMenu(); })
+                                            .Add("Desativar cadastro de funcionário", (thisMenu) => { ServicosFuncionario.DesativarCadastro(); thisMenu.CloseMenu(); })
                                             .Add("Voltar", ConsoleMenu.Close)
                                             .Configure(config =>
                                             {

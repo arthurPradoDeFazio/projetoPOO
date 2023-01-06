@@ -6,214 +6,128 @@ using CsvHelper.Configuration;
 
 namespace AdaCredit
 {
-	public static class ServicosCliente
+	public static class ServicosFuncionario
 	{
-		public static void CadastrarCliente()
+		public static void CadastrarFuncionario()
 		{
-			Console.Write("Entre com o primeiro nome do cliente: ");
+			Console.Write("Entre com o primeiro nome do funcionário: ");
 			string? nome = Console.ReadLine();
 			if (nome == null)
-				throw new IOException("Não foi possível ler o primeiro nome do cliente. Cadastro não realizado"); // TODO criar exceção mais especifica?
+				throw new IOException("Não foi possível ler o primeiro nome do funcionário. Cadastro não realizado"); // TODO criar exceção mais especifica?
 
-			Console.Write("Entre com último nome do cliente: ");
+			Console.Write("Entre com último nome do funcionário: ");
 			string? sobrenome = Console.ReadLine();
 			if (sobrenome == null)
-				throw new IOException("Não foi possível ler o último nome do cliente. Cadastro não realizado");
+				throw new IOException("Não foi possível ler o último nome do funcionário. Cadastro não realizado");
 
-			Dictionary<string, Cliente> clientes = Cliente.ClientesNoArquivo();
-			if (clientes.Any(c => c.Value.Nome == nome && c.Value.Sobrenome == sobrenome))
-				throw new ArgumentException("Cliente já cadastrado!");
+			Dictionary<string, Funcionario> funcionarios = Funcionario.FuncionariosNoArquivo();
+			if (funcionarios.Any(c => c.Value.Nome == nome && c.Value.Sobrenome == sobrenome))
+				throw new ArgumentException("Funcionário já cadastrado!");
 
-			string senha = ColetaSenha();
-			string conta = GeraNumeroDeConta(clientes);
+			string senha = ServicosFuncionario.ColetaSenha();
 
-			var novoCliente = new Cliente {
+			var novoFuncionario = new Funcionario {
 				Nome = nome,
 				Sobrenome = sobrenome,
 				Senha = senha,
-				Conta = conta,
-				DigitoVerficador = Cliente.CalculaDigito(conta),
-				Saldo = 0,
-				Agencia = "0001",
+				HoraUltimoLogin = "N/A",
+                DataUltimoLogin = "N/A",
 				Ativo = true
 			};
 
-			novoCliente.SalveNoCSV(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Desktop), "Clientes.csv"));
+			novoFuncionario.SalveNoCSV(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Desktop), "Funcionarios.csv"));
 
 		}
 
-		public static void ConsultaDados()
+        private static Funcionario ColetaFuncionario()
         {
-            Cliente clienteConsultado = ColetaCliente();
-            Console.WriteLine($"Informações do cliente:{Environment.NewLine}");
-            Console.WriteLine(clienteConsultado);
-        }
+            Console.Write("Entre com o primeiro nome do funcionário: ");
+            string? nome = Console.ReadLine();
+            if (nome == null)
+                throw new IOException("Não foi possível ler o nome do funcionário");
 
-        private static Cliente ColetaCliente()
-        {
-            Console.Write("Entre com o número da conta: ");
-            string? conta = Console.ReadLine();
-            if (conta == null)
-                throw new IOException("Não foi possível ler o número da conta");
+            Console.Write("Entre com o sobrenome do funcionário: ");
+            string? sobrenome = Console.ReadLine();
+            if (sobrenome == null)
+                throw new IOException("Não foi possível ler o nome do funcionário");
 
-            var clientes = Cliente.ClientesNoArquivo();
-            if (!clientes.TryGetValue(conta, out Cliente? clienteConsultado))
+            var funcionarios = Funcionario.FuncionariosNoArquivo();
+            if (!funcionarios.TryGetValue($"{nome} {sobrenome}", out Funcionario? funcionarioConsultado))
                 throw new IOException("Não há cliente com esse número de conta!");
 
-            Console.Write("Entre com o dígito verificador da conta: ");
-            char? digito = Console.ReadKey().KeyChar;
-            if (digito == null)
-                throw new IOException("Não foi possível ler o primeiro nome do cliente. Cadastro não realizado");
-            if (digito != Cliente.CalculaDigito(conta))
-                throw new ArgumentException("Dígito verificador incorreto");
-
-            Console.Write("Entre com a senha: ");
+            Console.Write("Entre com a senha do funcionário: ");
             string? senha = Console.ReadLine();
             if (senha == null)
                 throw new IOException("Não foi possível ler a senha");
-			if (senha != clienteConsultado.Senha)
+			if (senha != funcionarioConsultado.Senha)
 				throw new ArgumentException("Senha incorreta!");
 
-			return clienteConsultado;
+			return funcionarioConsultado;
         }
 
 		public static void DesativarCadastro()
 		{
-			var cliente = ColetaCliente();
-			if (!cliente.Ativo)
+			var funcionario = ColetaFuncionario();
+			if (!funcionario.Ativo)
 				return;
 
-			var novoCliente = new Cliente
+			var novoFuncionario= new Funcionario
 			{
-				Nome = cliente.Nome,
-				Sobrenome = cliente.Sobrenome,
-				Saldo = cliente.Saldo,
-				Conta = cliente.Conta,
-				DigitoVerficador = cliente.DigitoVerficador,
-				Senha = cliente.Senha,
-				Agencia = cliente.Agencia,
+				Nome = funcionario.Nome,
+				Sobrenome = funcionario.Sobrenome,
+				Senha = funcionario.Senha,
+                DataUltimoLogin = funcionario.DataUltimoLogin,
+                HoraUltimoLogin = funcionario.HoraUltimoLogin,
 				Ativo = false
 			};
 
-			var clientes = Cliente.ClientesNoArquivo();
-			clientes[novoCliente.Conta] = novoCliente;
-			SubstituaArquivo(clientes);
+			var funcionarios = Funcionario.FuncionariosNoArquivo();
+			funcionarios[$"{novoFuncionario.Nome} {novoFuncionario.Sobrenome}"] = novoFuncionario;
+			ServicosFuncionario.SubstituaArquivo(funcionarios);
 		}
-
-		public static void AlteraNome() // dá pra usar Template Method pattern com alterar sobrenome e senha -> refatorar
-		{
-            var cliente = ColetaCliente();
-            if (!cliente.Ativo)
-                throw new ArgumentException("Cliente inativo!");
-
-            Console.Write("Entre com o novo nome: ");
-            string? novoNome = Console.ReadLine();
-            if (novoNome == null)
-                throw new IOException("Não foi possível ler o novo nome");
-            var novoCliente = new Cliente
-            {
-                Nome = novoNome,
-                Sobrenome = cliente.Sobrenome,
-                Saldo = cliente.Saldo,
-                Conta = cliente.Conta,
-                DigitoVerficador = cliente.DigitoVerficador,
-                Senha = cliente.Senha,
-                Agencia = cliente.Agencia,
-                Ativo = cliente.Ativo
-            };
-
-            var clientes = Cliente.ClientesNoArquivo();
-            clientes[novoCliente.Conta] = novoCliente;
-            SubstituaArquivo(clientes);
-        }
-
-        public static void AlteraSobrenome()
-        {
-            var cliente = ColetaCliente();
-            if (!cliente.Ativo)
-                throw new ArgumentException("Cliente inativo!");
-
-            Console.Write("Entre com o novo sobrenome: ");
-            string? novoSobrenome = Console.ReadLine();
-            if (novoSobrenome== null)
-                throw new IOException("Não foi possível ler o novo sobrenome");
-            var novoCliente = new Cliente
-            {
-                Nome = cliente.Nome,
-                Sobrenome = novoSobrenome,
-                Saldo = cliente.Saldo,
-                Conta = cliente.Conta,
-                DigitoVerficador = cliente.DigitoVerficador,
-                Senha = cliente.Senha,
-                Agencia = cliente.Agencia,
-                Ativo = cliente.Ativo
-            };
-
-            var clientes = Cliente.ClientesNoArquivo();
-            clientes[novoCliente.Conta] = novoCliente;
-            SubstituaArquivo(clientes);
-        }
-
+				
         public static void AlteraSenha()
         {
-            var cliente = ColetaCliente();
-            if (!cliente.Ativo)
-                throw new ArgumentException("Cliente inativo!");
+            var funcionario = ColetaFuncionario();
+            if (!funcionario.Ativo)
+                throw new ArgumentException("Funcionário inativo!");
 
-            Console.Write("Entre com o nova senha: ");
+            Console.Write("Entre com a nova senha: ");
             string? novaSenha = Console.ReadLine();
             if (novaSenha== null)
-                throw new IOException("Não foi possível ler o novo nome");
-            var novoCliente = new Cliente
+                throw new IOException("Não foi possível ler a nova senha");
+            var novoFuncionario = new Funcionario
             {
-                Nome = cliente.Nome,
-                Sobrenome = cliente.Sobrenome,
-                Saldo = cliente.Saldo,
-                Conta = cliente.Conta,
-                DigitoVerficador = cliente.DigitoVerficador,
+                Nome = funcionario.Nome,
+                Sobrenome = funcionario.Sobrenome,
                 Senha = novaSenha,
-                Agencia = cliente.Agencia,
-                Ativo = cliente.Ativo
+				DataUltimoLogin = funcionario.DataUltimoLogin,
+				HoraUltimoLogin = funcionario.HoraUltimoLogin,
+                Ativo = funcionario.Ativo
             };
 
-            var clientes = Cliente.ClientesNoArquivo();
-            clientes[novoCliente.Conta] = novoCliente;
-            SubstituaArquivo(clientes);
+            var funcionarios = Funcionario.FuncionariosNoArquivo();
+            funcionarios[$"{novoFuncionario.Nome} {novoFuncionario.Sobrenome}"] = novoFuncionario;
+            ServicosFuncionario.SubstituaArquivo(funcionarios);
         }
 
-        private static void SubstituaArquivo(Dictionary<string, Cliente> clientes)
+        private static void SubstituaArquivo(Dictionary<string, Funcionario> funcionarios)
         {
 			var config = new CsvConfiguration(CultureInfo.InvariantCulture)
             {
                 HasHeaderRecord = true,
                 Delimiter = ";"
             };
-            string nomeDoArquivo = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Desktop), "Clientes.csv");
+            string nomeDoArquivo = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Desktop), "Funcionarios.csv");
 
             using (var leitor = new StreamWriter(nomeDoArquivo))
             using (var csv = new CsvHelper.CsvWriter(leitor, config))
             {
-                csv.Context.RegisterClassMap<Cliente.ClienteMap>();
-				csv.WriteRecords(clientes.Select(entrada => entrada.Value));
+                csv.Context.RegisterClassMap<Funcionario.FuncionarioMap>();
+				csv.WriteRecords(funcionarios.Select(entrada => entrada.Value));
             }
 		}
-
-        private class ContaBogus
-        {
-            public string StringConta { get; set; }
-        }
-
-        private static string GeraNumeroDeConta(Dictionary<string, Cliente> clientes)
-        {			
-			var geradorDeConta = new Faker<ContaBogus>("pt_BR")
-										.RuleFor(s => s.StringConta, f => f.Finance.Account(5));
-			ContaBogus novaConta;
-			while (clientes.ContainsKey((novaConta = geradorDeConta.Generate()).StringConta)) { }
-			return novaConta.StringConta;
-        }
-
 		
-
         private static string ColetaSenha()
         {
             string? senha, confirmacao;
