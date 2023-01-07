@@ -1,4 +1,6 @@
 ﻿using System;
+using CsvHelper.Configuration;
+
 namespace AdaCredit
 {
 	public class Transferencia
@@ -15,8 +17,25 @@ namespace AdaCredit
 
 		public decimal ValorTransferencia { get; init; }
 
+		public class TransferenciaMap : ClassMap<Transferencia>
+		{
+			public TransferenciaMap()
+			{
+				Map(t => t.CodigoDoBancoDeOrigem).Index(0).Name("banco_origem");
+				Map(t => t.AgenciaDoBancoDeOrigem).Index(1).Name("agencia_origem");
+				Map(t => t.ContaDeOrigem).Index(2).Name("conta_origem");
 
-		public bool TipoDeTransicaoValido() =>
+				Map(t => t.CodigoDoBancoDeDestino).Index(3).Name("banco_destino");
+				Map(t => t.AgenciaDoBancoDeDestino).Index(4).Name("agencia_destino");
+				Map(t => t.ContaDeDestino).Index(5).Name("conta_destino");
+
+				Map(t => t.Transacao).Index(6).Name("tipo_transacao");
+				Map(t => t.ValorTransferencia).Index(7).Name("valor");
+			}
+		}
+
+
+        public bool TipoDeTransferenciaValido() =>
 			(Transacao == "TEF" || Transacao == "DOC" || Transacao == "TED") && !(Transacao == "TEF" && CodigoDoBancoDeOrigem != CodigoDoBancoDeDestino);
 
 		public decimal Tarifa(DateOnly dataDaTransacao)
@@ -59,7 +78,7 @@ namespace AdaCredit
             return clienteOrigem.Saldo - ValorTransferencia - Tarifa(dataDaTransacao) >= 0;
 		}
 
-        public bool TarifaValida(DateOnly dataDaTransacao) => TipoDeTransicaoValido() && ContasValidas() && SaldoSuficiente(dataDaTransacao);
+        public bool TransferenciaValida(DateOnly dataDaTransacao) => TipoDeTransferenciaValido() && ContasValidas() && SaldoSuficiente(dataDaTransacao);
     }
 }
 
